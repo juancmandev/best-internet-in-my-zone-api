@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import routerApi from './src/routes/routerApi';
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -18,8 +19,10 @@ app.use(express.json());
 app.use(cors(options));
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
+  res.send('This is the REST API of the app');
 });
+
+routerApi(app);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
