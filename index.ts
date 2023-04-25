@@ -3,7 +3,7 @@ import cors from 'cors';
 import routerApi from './src/routes/routerApi';
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 const whitelist = ['http://localhost:3000'];
 const options = {
   origin: (origin: any, callback: any) => {
@@ -24,6 +24,6 @@ app.get('/', (req: Request, res: Response) => {
 
 routerApi(app);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
