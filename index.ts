@@ -7,11 +7,8 @@ const port = process.env.PORT || 8000;
 const whitelist = ['http://localhost:3000'];
 const options = {
   origin: (origin: any, callback: any) => {
-    if (whitelist.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
+    if (whitelist.includes(origin) || !origin) callback(null, true);
+    else callback(new Error('Not allowed by CORS'));
   },
 };
 
