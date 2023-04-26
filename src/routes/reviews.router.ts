@@ -17,6 +17,11 @@ reviewRouter
       if (error instanceof Error)
         res.status(500).json({ error: error.message });
     }
+  })
+  .get(async (req: Request, res: Response) => {
+    const reviews = await reviewService.test();
+
+    res.status(200).json(reviews);
   });
 
 export default reviewRouter;
