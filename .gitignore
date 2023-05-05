@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 postgres_data/
+
+docker-compose.yml
+```
