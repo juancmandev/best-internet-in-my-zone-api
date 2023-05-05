@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+import ispRouter from './isps.router';
 import reviewRouter from './reviews.router';
 
 const routerApi = (app: Express) => {
@@ -6,6 +7,8 @@ const routerApi = (app: Express) => {
 
   app.use('/api/v1', router);
   router.use('/reviews', reviewRouter);
+  router.use('/isps', ispRouter);
 };
+3;
 
 export default routerApi;

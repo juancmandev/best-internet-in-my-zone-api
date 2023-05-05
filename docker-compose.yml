@@ -1,6 +1,6 @@
 services:
     localdb:
-        image: postgres
+        image: kartoza/postgis
         restart: always
         ports:
             - 5432:5432

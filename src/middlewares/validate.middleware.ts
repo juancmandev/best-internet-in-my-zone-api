@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { ReviewSchema } from '../schemas/review.schema';
+import { IspSchema } from '../schemas/isp.schema';
 
 const validate = (
   schema: z.AnyZodObject | z.ZodOptional<z.AnyZodObject>
@@ -23,3 +24,4 @@ const validate = (
 };
 
 export const validateReviewCreate = validate(ReviewSchema);
+export const validateIspCreate = validate(IspSchema);

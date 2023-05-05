@@ -1,18 +1,18 @@
 import express, { Request, Response } from 'express';
-import { ReviewService } from '../services/review.service';
-import { validateReviewCreate } from '../middlewares/validate.middleware';
+import { validateIspCreate } from '../middlewares/validate.middleware';
+import { IspService } from '../services/isp.service';
 
-const reviewRouter = express.Router();
-const reviewService = new ReviewService();
+const ispRouter = express.Router();
+const ispService = new IspService();
 
-reviewRouter
+ispRouter
   .route('/')
-  .post(validateReviewCreate, async (req: Request, res: Response) => {
+  .post(validateIspCreate, async (req: Request, res: Response) => {
     try {
       const body = req.body;
-      const newReview = await reviewService.create(body);
+      const newIsp = await ispService.create(body);
 
-      res.status(201).json(newReview);
+      res.status(201).json(newIsp);
     } catch (error) {
       if (error instanceof Error)
         res.status(500).json({ error: error.message });
@@ -21,12 +21,10 @@ reviewRouter
   .put(async (req: Request, res: Response) => {
     try {
       const body = req.body;
-      const reviews = await reviewService.getByAGivenPoint(
-        body.point,
-        body.radius
-      );
+      const { country } = body;
+      const isps = await ispService.findAll(country);
 
-      res.status(200).json(reviews);
+      res.status(200).json(isps);
     } catch (error) {
       if (error instanceof Error)
         res.status(500).json({ error: error.message });
@@ -37,13 +35,13 @@ reviewRouter
 //     const body = req.body;
 //     const id = body.id;
 
-//     await reviewService.delete(id);
+//     await ispService.delete(id);
 
-//     res.status(200).json({ message: 'Review deleted' });
+//     res.status(200).json({ message: 'ISP deleted' });
 //   } catch (error) {
 //     if (error instanceof Error)
 //       res.status(500).json({ error: error.message });
 //   }
 // });
 
-export default reviewRouter;
+export default ispRouter;
