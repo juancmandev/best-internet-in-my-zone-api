@@ -13,6 +13,7 @@ COPY . .
 # If you add a package-lock.json, speed your build by switching to 'npm ci'.
 RUN npm i -g npm@8.19.2
 RUN npm ci --only=production
+RUN npm install typescript
 
 # Copy local code to the container image.
 
