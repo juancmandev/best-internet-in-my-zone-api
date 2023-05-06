@@ -1,13 +1,14 @@
-FROM node:16
+FROM node:16.16.0-alpine
 
-WORKDIR /app
+RUN mkdir -p /usr/src/app
 
-COPY package.json .
+WORKDIR /usr/src/app
 
-RUN npm i
+COPY . .
 
-COPY . . 
-
+RUN npm install
 RUN npm run build
 
-CMD npm run start
+EXPOSE $PORT
+
+CMD ["npm","start"]
