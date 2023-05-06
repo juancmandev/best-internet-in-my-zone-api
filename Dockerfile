@@ -20,4 +20,5 @@ RUN npm install typescript
 RUN npm run build
 
 # Run the web service on container startup.
+EXPOSE $PORT
 CMD [ "npm", "start" ]
