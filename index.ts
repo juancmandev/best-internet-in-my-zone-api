@@ -3,12 +3,16 @@ import dataSource from './src/libs/postgres.pool';
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import routerApi from './src/routes/routerApi';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 dataSource
   .initialize()
   .then(async () => {
     const app = express();
     const port = process.env.PORT || 8000;
+
     const whitelist = ['http://localhost:3000'];
     const options = {
       origin: (origin: any, callback: any) => {
