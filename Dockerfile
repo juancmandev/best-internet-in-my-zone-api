@@ -8,8 +8,6 @@ RUN npm i
 
 COPY . . 
 
-FROM dependencies as builder
-
 RUN npm run build
 
 EXPOSE $PORT
