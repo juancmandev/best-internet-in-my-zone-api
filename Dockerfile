@@ -1,13 +1,17 @@
 FROM node:16
 
-WORKDIR /usr/app
+WORKDIR /app
 
-COPY package*.json ./
+COPY package.json .
 
-RUN npm install
+RUN npm i
+
+COPY . . 
+
+FROM dependencies as builder
+
 RUN npm run build
 
-COPY . .
-
 EXPOSE $PORT
-CMD [ "npm", "start" ]
+
+CMD npm run start
