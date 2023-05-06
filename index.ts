@@ -14,10 +14,7 @@ dataSource
     const port = process.env.PORT || 8080;
     console.log(port);
 
-    const whitelist = [
-      'http://localhost:3000',
-      'https://the-best-internet-in-my-zone.vercel.app',
-    ];
+    const whitelist = ['https://the-best-internet-in-my-zone.vercel.app'];
     const options = {
       origin: (origin: any, callback: any) => {
         if (whitelist.includes(origin) || !origin) callback(null, true);
