@@ -11,7 +11,8 @@ dataSource
   .initialize()
   .then(async () => {
     const app = express();
-    const port = process.env.PORT || 8000;
+    const port = process.env.PORT || 8080;
+    console.log(port);
 
     const whitelist = ['http://localhost:3000'];
     const options = {

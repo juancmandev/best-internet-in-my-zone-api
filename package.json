@@ -2,7 +2,7 @@
   "name": "best-internet-in-my-zone-api",
   "version": "1.0.0",
   "description": "Best Internet in my Zone REST API",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only index.ts",
     "build": "tsc --build",
